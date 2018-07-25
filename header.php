@@ -1,4 +1,10 @@
 <?php 
+global $post;
+if(is_front_page()){
+  $page_id = get_option( 'page_on_front' );
+}else{
+  $page_id = $post->ID;
+}
 
 ?>
 <!doctype html>
@@ -66,7 +72,10 @@
       </nav>
     </header>
     <!-- Header end -->
-    <?php if(get_field('display_banner') == 'Yes'){?>
+  
+
+
+    <?php if(get_field('dsiplay_banner',$page_id) == 'Yes'){?>
     <?php get_template_part('template-parts/banner');?>
     <?php }?>
     <!-- app store start -->
